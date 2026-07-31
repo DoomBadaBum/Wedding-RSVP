@@ -230,7 +230,7 @@ a {
     linear-gradient(160deg, rgba(86, 49, 56, 0.88), rgba(122, 75, 82, 0.78)),
     radial-gradient(circle at 20% 20%, rgba(184, 148, 94, 0.35), transparent 40%),
     radial-gradient(circle at 80% 80%, rgba(216, 180, 160, 0.3), transparent 45%),
-    url('/images/couple-placeholder.jpg') center / cover no-repeat;
+    url('../images/couple-placeholder.jpg') center / cover no-repeat;
   isolation: isolate;
   overflow: hidden;
 }

@@ -16,7 +16,7 @@ Stack:
 | Build     | Vite                   |
 | Frontend  | HTML, CSS, JavaScript  |
 | Database  | Supabase (PostgreSQL)  |
-| Hosting   | Vercel / Netlify       |
+| Hosting   | GitHub Pages / Vercel / Netlify |
 
 ## 2. Pasang Node.js
 
@@ -131,7 +131,24 @@ npm run preview
 
 Output berada dalam folder `dist/`.
 
-## 11. Deploy ke Vercel atau Netlify
+## 11. Deploy
+
+### GitHub Pages (disyorkan untuk projek ini)
+
+Repositori ini termasuk workflow `.github/workflows/deploy-pages.yml`.
+
+1. Buka repo di GitHub → **Settings** → **Secrets and variables** → **Actions**
+2. Klik **New repository secret** dan tambah:
+   - `VITE_SUPABASE_URL` → contoh: `https://uwpukfjrvovdofqvjkqd.supabase.co`
+   - `VITE_SUPABASE_ANON_KEY` → kunci **anon public** anda
+3. Buka **Settings** → **Pages**
+4. Di **Build and deployment** → **Source**, pilih **GitHub Actions**
+5. Tolak commit ke `main` (atau jalankan workflow secara manual di tab **Actions**)
+6. Selepas deploy berjaya, laman akan berada di:
+
+```text
+https://doombadabum.github.io/Wedding-RSVP/
+```
 
 ### Vercel
 
