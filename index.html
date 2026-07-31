@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Jemputan majlis perkahwinan Muhammad Danish & Nur Yasmin Imanina. Sahkan kehadiran anda di sini."
+    />
+    <meta name="theme-color" content="#7a4b52" />
+    <title>Walimatulurus | Muhammad Danish & Nur Yasmin Imanina</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#utama">Langkau ke kandungan</a>
+
+    <div class="floral floral--top" aria-hidden="true">
+      <img src="/images/floral-decoration.png" alt="" width="180" height="180" />
+    </div>
+    <div class="floral floral--bottom" aria-hidden="true">
+      <img src="/images/floral-decoration.png" alt="" width="180" height="180" />
+    </div>
+
+    <header class="hero" id="utama">
+      <div class="hero__overlay"></div>
+      <div class="hero__content container">
+        <p class="hero__eyebrow fade-in">Walimatulurus</p>
+        <h1 class="hero__names fade-in">
+          Muhammad Danish
+          <span class="hero__ampersand">&amp;</span>
+          Nur Yasmin Imanina
+        </h1>
+        <figure class="hero__photo fade-in">
+          <img
+            src="/images/couple-placeholder.jpg"
+            alt="Gambar pasangan Muhammad Danish dan Nur Yasmin Imanina"
+            width="320"
+            height="400"
+          />
+        </figure>
+        <p class="hero__date fade-in" id="hero-date">1 Januari 2027</p>
+        <div class="countdown fade-in" id="countdown" aria-live="polite" aria-atomic="true">
+          <div class="countdown__item">
+            <span class="countdown__value" data-unit="days">00</span>
+            <span class="countdown__label">Hari</span>
+          </div>
+          <div class="countdown__item">
+            <span class="countdown__value" data-unit="hours">00</span>
+            <span class="countdown__label">Jam</span>
+          </div>
+          <div class="countdown__item">
+            <span class="countdown__value" data-unit="minutes">00</span>
+            <span class="countdown__label">Minit</span>
+          </div>
+          <div class="countdown__item">
+            <span class="countdown__value" data-unit="seconds">00</span>
+            <span class="countdown__label">Saat</span>
+          </div>
+        </div>
+        <div class="hero__actions fade-in">
+          <a class="btn btn--primary" href="#rsvp">Sahkan Kehadiran</a>
+          <a class="btn btn--outline" href="#lokasi">Lihat Lokasi</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section greeting" id="ucapan-jemputan" aria-labelledby="greeting-title">
+        <div class="container narrow">
+          <div class="ornament" aria-hidden="true">❧</div>
+          <h2 class="section__title" id="greeting-title">Jemputan</h2>
+          <p class="greeting__text">
+            Dengan penuh kesyukuran ke hadrat Allah SWT, kami dengan sukacitanya
+            menjemput Dato’ / Datin / Tuan / Puan / Encik / Cik ke majlis
+            perkahwinan kami.
+          </p>
+          <div class="greeting__names">
+            <p class="greeting__name" id="groom-full-name">MUHAMMAD DANISH BIN SHAMSURI</p>
+            <p class="greeting__and">&amp;</p>
+            <p class="greeting__name" id="bride-full-name">NUR YASMIN IMANINA BINTI MAZLAN</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section details" id="lokasi" aria-labelledby="details-title">
+        <div class="container">
+          <div class="ornament" aria-hidden="true">❧</div>
+          <h2 class="section__title" id="details-title">Maklumat Majlis</h2>
+          <p class="section__subtitle">Butiran tarikh, masa dan lokasi majlis perkahwinan.</p>
+
+          <div class="details__grid">
+            <article class="detail-card">
+              <h3 class="detail-card__label">Tarikh</h3>
+              <p class="detail-card__value" id="event-date-display">1 Januari 2027</p>
+            </article>
+            <article class="detail-card">
+              <h3 class="detail-card__label">Hari</h3>
+              <p class="detail-card__value" id="event-day">Jumaat</p>
+            </article>
+            <article class="detail-card">
+              <h3 class="detail-card__label">Masa</h3>
+              <p class="detail-card__value" id="event-time">11:00 pagi – 4:00 petang</p>
+            </article>
+            <article class="detail-card">
+              <h3 class="detail-card__label">Lokasi</h3>
+              <p class="detail-card__value" id="event-venue">Nama Dewan</p>
+            </article>
+            <article class="detail-card detail-card--wide">
+              <h3 class="detail-card__label">Alamat</h3>
+              <p class="detail-card__value" id="event-address">Alamat penuh majlis</p>
+            </article>
+          </div>
+
+          <div class="details__actions">
+            <a
+              class="btn btn--secondary"
+              id="maps-btn"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Buka Google Maps
+            </a>
+            <a
+              class="btn btn--secondary"
+              id="waze-btn"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Buka Waze
+            </a>
+            <button type="button" class="btn btn--outline" id="calendar-btn">
+              Tambah ke Kalendar
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section rsvp-section" id="rsvp" aria-labelledby="rsvp-title">
+        <div class="container narrow">
+          <div class="ornament" aria-hidden="true">❧</div>
+          <h2 class="section__title" id="rsvp-title">Pengesahan Kehadiran</h2>
+          <p class="section__subtitle">
+            Sila lengkapkan maklumat di bawah untuk mengesahkan kehadiran anda.
+          </p>
+
+          <form class="form" id="rsvp-form" novalidate>
+            <div class="form__group">
+              <label class="form__label" for="rsvp-name">Nama penuh</label>
+              <input
+                class="form__input"
+                type="text"
+                id="rsvp-name"
+                name="name"
+                maxlength="100"
+                autocomplete="name"
+                required
+                aria-describedby="rsvp-name-error"
+              />
+              <p class="form__error" id="rsvp-name-error" role="alert"></p>
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="rsvp-phone">Nombor telefon</label>
+              <input
+                class="form__input"
+                type="tel"
+                id="rsvp-phone"
+                name="phone"
+                maxlength="30"
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="0123456789"
+                required
+                aria-describedby="rsvp-phone-error"
+              />
+              <p class="form__error" id="rsvp-phone-error" role="alert"></p>
+            </div>
+
+            <fieldset class="form__group form__fieldset">
+              <legend class="form__label">Status kehadiran</legend>
+              <div class="radio-group" role="radiogroup" aria-required="true">
+                <label class="radio">
+                  <input type="radio" name="attendance" value="hadir" checked />
+                  <span>Hadir</span>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="attendance" value="tidak_hadir" />
+                  <span>Tidak dapat hadir</span>
+                </label>
+              </div>
+              <p class="form__error" id="rsvp-attendance-error" role="alert"></p>
+            </fieldset>
+
+            <div class="form__group">
+              <label class="form__label" for="rsvp-pax">Jumlah kehadiran</label>
+              <input
+                class="form__input"
+                type="number"
+                id="rsvp-pax"
+                name="pax"
+                min="1"
+                max="10"
+                value="1"
+                required
+                aria-describedby="rsvp-pax-error"
+              />
+              <p class="form__error" id="rsvp-pax-error" role="alert"></p>
+            </div>
+
+            <div class="form__feedback" id="rsvp-feedback" aria-live="polite"></div>
+
+            <button type="submit" class="btn btn--primary btn--block" id="rsvp-submit">
+              <span class="btn__spinner" aria-hidden="true"></span>
+              <span class="btn__text">Hantar RSVP</span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section wishes-section" id="titipan-ucapan" aria-labelledby="wishes-title">
+        <div class="container">
+          <div class="ornament" aria-hidden="true">❧</div>
+          <h2 class="section__title" id="wishes-title">Titipan Ucapan</h2>
+          <p class="section__subtitle">
+            Tinggalkan doa dan ucapan buat pasangan pengantin.
+          </p>
+
+          <div class="wishes-layout">
+            <form class="form form--card" id="wishes-form" novalidate>
+              <div class="form__group">
+                <label class="form__label" for="wish-name">Nama</label>
+                <input
+                  class="form__input"
+                  type="text"
+                  id="wish-name"
+                  name="name"
+                  maxlength="100"
+                  autocomplete="name"
+                  required
+                  aria-describedby="wish-name-error"
+                />
+                <p class="form__error" id="wish-name-error" role="alert"></p>
+              </div>
+
+              <div class="form__group">
+                <label class="form__label" for="wish-message">Ucapan</label>
+                <textarea
+                  class="form__input form__textarea"
+                  id="wish-message"
+                  name="message"
+                  maxlength="500"
+                  rows="4"
+                  required
+                  aria-describedby="wish-message-counter wish-message-error"
+                ></textarea>
+                <div class="form__meta">
+                  <p class="form__error" id="wish-message-error" role="alert"></p>
+                  <p class="form__counter" id="wish-message-counter" aria-live="polite">
+                    0 / 500
+                  </p>
+                </div>
+              </div>
+
+              <div class="form__feedback" id="wish-feedback" aria-live="polite"></div>
+
+              <button type="submit" class="btn btn--primary btn--block" id="wish-submit">
+                <span class="btn__spinner" aria-hidden="true"></span>
+                <span class="btn__text">Hantar Ucapan</span>
+              </button>
+            </form>
+
+            <div class="wishes-list-wrap">
+              <h3 class="wishes-list__heading">Ucapan Tetamu</h3>
+              <div id="wishes-status" class="wishes-status" aria-live="polite"></div>
+              <div id="wishes-list" class="wishes-list"></div>
+              <button type="button" class="btn btn--outline" id="wishes-load-more" hidden>
+                Lihat Lagi
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container narrow">
+        <p class="footer__names">Muhammad Danish &amp; Nur Yasmin Imanina</p>
+        <p class="footer__thanks">Terima kasih atas doa dan kehadiran anda.</p>
+        <p class="footer__copy">
+          &copy; <span id="copyright-year"></span> Walimatulurus Danish &amp; Yasmin
+        </p>
+      </div>
+    </footer>
+
+    <div
+      class="modal"
+      id="success-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="success-modal-title"
+      aria-describedby="success-modal-desc"
+      hidden
+    >
+      <div class="modal__backdrop" data-modal-close></div>
+      <div class="modal__dialog" role="document">
+        <button type="button" class="modal__close" data-modal-close aria-label="Tutup">
+          &times;
+        </button>
+        <div class="modal__icon" aria-hidden="true">♥</div>
+        <h2 class="modal__title" id="success-modal-title">Alhamdulillah</h2>
+        <p class="modal__desc" id="success-modal-desc">
+          Terima kasih kerana mengesahkan kehadiran anda.
+        </p>
+        <button type="button" class="btn btn--primary" data-modal-close>Tutup</button>
+      </div>
+    </div>
+
+    <div
+      class="toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      hidden
+    ></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
