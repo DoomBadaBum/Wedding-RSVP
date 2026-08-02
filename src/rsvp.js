@@ -36,6 +36,8 @@ export function initRsvpForm() {
 
   let isSubmitting = false;
 
+  loadRsvpCounts();
+
   const syncPaxWithAttendance = () => {
     const status = form.querySelector('input[name="attendance"]:checked')?.value;
     if (status === 'tidak_hadir') {
@@ -136,6 +138,7 @@ export function initRsvpForm() {
       clearFieldError(phoneInput, phoneError);
       clearFieldError(paxInput, paxError);
       openModal('success-modal');
+      loadRsvpCounts();
     } catch (error) {
       console.error('[RSVP] Submission failed:', error);
       feedback.className = 'form__feedback form__feedback--error';
@@ -199,4 +202,36 @@ async function submitRsvp(payload) {
   }
 
   return { status: data?.status || 'ok', data };
+}
+
+/**
+ * Load aggregate Hadir / Tidak hadir counts (no individual RSVP rows).
+ */
+async function loadRsvpCounts() {
+  const hadirEl = document.getElementById('rsvp-count-hadir');
+  const tidakEl = document.getElementById('rsvp-count-tidak-hadir');
+  if (!hadirEl || !tidakEl) return;
+
+  if (!isSupabaseConfigured()) {
+    hadirEl.textContent = '0';
+    tidakEl.textContent = '0';
+    return;
+  }
+
+  try {
+    const supabase = getSupabase();
+    const { data, error } = await supabase.rpc('get_rsvp_counts');
+
+    if (error) throw error;
+
+    const hadir = Number(data?.hadir ?? 0);
+    const tidakHadir = Number(data?.tidak_hadir ?? 0);
+
+    hadirEl.textContent = Number.isFinite(hadir) ? String(hadir) : '0';
+    tidakEl.textContent = Number.isFinite(tidakHadir) ? String(tidakHadir) : '0';
+  } catch (error) {
+    console.error('[RSVP] Failed to load counts:', error);
+    hadirEl.textContent = '—';
+    tidakEl.textContent = '—';
+  }
 }

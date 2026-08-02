@@ -177,10 +177,26 @@ BEGIN
 END;
 $$;
 
+-- Aggregated RSVP counts only (no row-level data exposed to clients)
+CREATE OR REPLACE FUNCTION public.get_rsvp_counts()
+RETURNS JSON
+LANGUAGE sql
+SECURITY DEFINER
+SET search_path = public
+STABLE
+AS $$
+  SELECT json_build_object(
+    'hadir', COALESCE(SUM(CASE WHEN attendance_status = 'hadir' THEN 1 ELSE 0 END), 0),
+    'tidak_hadir', COALESCE(SUM(CASE WHEN attendance_status = 'tidak_hadir' THEN 1 ELSE 0 END), 0)
+  )
+  FROM public.rsvp;
+$$;
+
 -- Grant execute on RPCs to anonymous & authenticated clients
 GRANT USAGE ON SCHEMA public TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION public.check_rsvp_phone(TEXT) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION public.upsert_rsvp(TEXT, TEXT, INTEGER, TEXT, BOOLEAN) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.get_rsvp_counts() TO anon, authenticated;
 
 -- Table grants (RLS still applies)
 GRANT INSERT ON public.rsvp TO anon, authenticated;

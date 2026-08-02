@@ -1,5 +1,5 @@
-/* =============================================================================
-   Walimatulurus — Muhammad Danish & Nur Yasmin Imanina
+﻿/* =============================================================================
+   Walimatulurus â€” Muhammad Danish & Nur Yasmin Imanina
    Mobile-first elegant Malaysian wedding invitation styles
    ============================================================================= */
 
@@ -35,6 +35,7 @@
 
   --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-sans: 'Outfit', 'Segoe UI', Tahoma, sans-serif;
+  --font-script: 'Great Vibes', cursive;
 
   --container: 68rem;
   --narrow: 36rem;
@@ -78,6 +79,426 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
+}
+
+body.envelope-locked {
+  overflow: hidden;
+  height: 100dvh;
+  padding-bottom: 0;
+}
+
+html:has(body.envelope-locked) {
+  overflow: hidden;
+}
+
+body.envelope-locked .bottom-nav,
+body.envelope-locked .floral {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* -----------------------------------------------------------------------------
+   Envelope intro â€” closed letter opens to reveal maroon card
+   ----------------------------------------------------------------------------- */
+.envelope-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.15rem;
+  padding: clamp(1.75rem, 6vh, 3.5rem) 1rem calc(1.25rem + env(safe-area-inset-bottom));
+  color: #f7efe8;
+  overflow: hidden;
+  transition: opacity 0.85s ease, visibility 0.85s ease;
+}
+
+.envelope-intro.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope-intro__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(184, 148, 94, 0.22), transparent 42%),
+    radial-gradient(ellipse at 20% 80%, rgba(122, 75, 82, 0.45), transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(86, 49, 56, 0.5), transparent 45%),
+    linear-gradient(165deg, #2a151a 0%, #563138 38%, #3d2228 68%, #1f1014 100%);
+}
+
+.envelope-intro::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(30, 14, 18, 0.35) 0%, transparent 40%, rgba(30, 14, 18, 0.45) 100%);
+}
+
+.envelope-intro__header,
+.letter,
+.envelope-intro__hint {
+  position: relative;
+  z-index: 1;
+}
+
+.envelope-intro__header {
+  text-align: center;
+  max-width: 20rem;
+  margin-top: auto;
+}
+
+.envelope-intro__eyebrow {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(0.72rem, 2.8vw, 0.88rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+.envelope-intro__names {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-script);
+  font-size: clamp(1.25rem, 5vw, 1.85rem);
+  line-height: 1.2;
+  font-weight: 400;
+  color: #fff;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+}
+
+.letter {
+  margin-top: 0;
+  margin-bottom: auto;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  width: min(82vw, 300px);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.letter:focus-visible .letter__stage {
+  box-shadow: 0 0 0 3px rgba(184, 148, 94, 0.85);
+}
+
+.letter__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 7 / 5;
+  margin: 0 auto;
+  perspective: 1400px;
+  border-radius: 6px;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.45));
+}
+
+/* Inside of the envelope: only ever seen through the opening, behind the card. */
+.letter__back {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #e2d1bd 0%, #d6c2ab 100%);
+  box-shadow: inset 0 6px 12px rgba(90, 50, 56, 0.14);
+}
+
+/* Side flaps. Part of the envelope front, so the contents pass behind them. */
+.letter__sides {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.letter__sides::before,
+.letter__sides::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #efe3d5 0%, #e2d0bd 100%);
+  box-shadow: inset 0 0 14px rgba(122, 75, 82, 0.07);
+}
+
+.letter__sides::before {
+  clip-path: polygon(0 0, 50% 60%, 0 100%);
+}
+
+.letter__sides::after {
+  clip-path: polygon(100% 0, 50% 60%, 100% 100%);
+}
+
+.letter__mail {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 2%;
+  bottom: 22%;
+  z-index: 3;
+  pointer-events: none;
+  /* Open above and to the sides, but cut off flush with the bottom of the
+     envelope so the contents can never appear underneath it. */
+  clip-path: inset(-160% -50% -29% -50%);
+}
+
+.letter__card {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  /* Text is anchored to the top: the lower half of the card stays inside the pocket. */
+  padding: 1rem 0.9rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  color: #fffaf5;
+  overflow: hidden;
+  background: linear-gradient(165deg, #8d5159 0%, #7a4b52 42%, #5a3238 100%);
+  box-shadow:
+    inset 0 0 0 7px rgba(247, 239, 232, 0.14),
+    inset 0 0 0 10px rgba(74, 40, 46, 0.45),
+    0 10px 22px rgba(0, 0, 0, 0.28);
+  /* Parked just below the apex of the opening, so it is hidden by the front. */
+  transform: translateY(80%);
+  opacity: 0;
+  transition:
+    transform 1.05s cubic-bezier(0.22, 0.8, 0.28, 1) 0.5s,
+    opacity 0.01s linear 0.5s;
+}
+
+.letter__card-script {
+  margin: 0;
+  font-family: var(--font-script);
+  font-size: clamp(0.9rem, 3.5vw, 1.15rem);
+  line-height: 1.3;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.letter__card-script span {
+  display: block;
+  font-size: 0.55em;
+  margin: 0.02em 0;
+}
+
+.letter__card-line {
+  margin: 0.45rem 0 0;
+  font-family: var(--font-serif);
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.letter__card-date {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.letter__card-place {
+  margin: 0.22rem 0 0;
+  font-size: 0.56rem;
+  line-height: 1.3;
+  opacity: 0.8;
+  max-width: 10rem;
+}
+
+.letter__polaroid {
+  position: absolute;
+  z-index: 0;
+  width: 34%;
+  padding: 0.2rem 0.2rem 0.6rem;
+  background: #f7efe8;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transition:
+    transform 0.95s cubic-bezier(0.22, 0.8, 0.28, 1) 0.58s,
+    opacity 0.01s linear 0.58s;
+}
+
+.letter__polaroid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  filter: grayscale(0.3) contrast(1.05);
+}
+
+.letter__polaroid--left {
+  left: -6%;
+  top: 6%;
+  transform: rotate(-13deg) translateY(130%);
+}
+
+.letter__polaroid--right {
+  right: -6%;
+  top: 10%;
+  transform: rotate(12deg) translateY(130%);
+}
+
+/* Decorative overlay laid on the front of the envelope, not tucked inside it. */
+.letter__florals {
+  position: absolute;
+  right: -12%;
+  top: -15%;
+  z-index: 6;
+  width: 38%;
+  height: auto;
+  opacity: 0;
+  transform: translate(-8%, 30%) rotate(16deg) scale(0.85);
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.3));
+  transition:
+    opacity 0.5s ease 0.95s,
+    transform 0.9s cubic-bezier(0.22, 0.8, 0.28, 1) 0.9s;
+  pointer-events: none;
+}
+
+/* Bottom flap: apex at the centre so all four folds converge on one point */
+.letter__pocket {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  clip-path: polygon(0 100%, 50% 60%, 100% 100%);
+  border-radius: 0 0 6px 6px;
+  background: linear-gradient(180deg, #f7efe4 0%, #ead9c8 100%);
+  filter: drop-shadow(0 -2px 3px rgba(90, 50, 56, 0.14));
+}
+
+/* Top flap: hinged on the top edge. Sits below the mail so that once it folds
+   back, the card rising out of the envelope passes in front of it. */
+.letter__flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 60%;
+  z-index: 2;
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  background: linear-gradient(180deg, #fdf7f0 0%, #f2e6d8 62%, #e7d6c4 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  filter: drop-shadow(0 3px 3px rgba(90, 50, 56, 0.22));
+  transition: transform 1.05s cubic-bezier(0.6, 0.02, 0.24, 1);
+}
+
+.letter__seal {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  z-index: 7;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 32% 28%, #a15f68 0%, #7a4b52 42%, #4a282e 100%);
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.25);
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.letter__seal::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  border: 1px dashed rgba(247, 239, 232, 0.4);
+}
+
+.letter__seal::after {
+  content: 'I&D';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f7efe8;
+}
+
+/* Stands open and tips back past vertical, showing its inner face. */
+.envelope-intro.is-open .letter__flap {
+  transform: rotateX(-118deg);
+  background: linear-gradient(180deg, #e0cdba 0%, #ecdccb 45%, #f7efe4 100%);
+  filter: drop-shadow(0 -4px 8px rgba(0, 0, 0, 0.32));
+}
+
+.envelope-intro.is-open .letter__seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7);
+  pointer-events: none;
+}
+
+.envelope-intro.is-open .letter__card {
+  opacity: 1;
+  transform: translateY(-14%) rotate(-3deg);
+}
+
+.envelope-intro.is-open .letter__polaroid {
+  opacity: 1;
+}
+
+.envelope-intro.is-open .letter__polaroid--left {
+  transform: rotate(-13deg) translateY(-58%);
+}
+
+.envelope-intro.is-open .letter__polaroid--right {
+  transform: rotate(12deg) translateY(-52%);
+}
+
+.envelope-intro.is-open .letter__florals {
+  opacity: 1;
+  transform: translate(0, 0) rotate(8deg) scale(1);
+}
+
+.envelope-intro__hint {
+  margin: 0 0 0.35rem;
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.82);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  animation: hint-pulse 2.2s ease-in-out infinite;
+}
+
+.envelope-intro.is-opening .envelope-intro__hint,
+.envelope-intro.is-open .envelope-intro__hint {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes hint-pulse {
+  0%,
+  100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .envelope-intro__hint { animation: none; }
+
+  .letter__flap,
+  .letter__card,
+  .letter__polaroid,
+  .letter__florals,
+  .letter__seal,
+  .envelope-intro {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
 }
 
 img {
@@ -276,21 +697,6 @@ a {
   color: var(--gold);
   margin: 0.15em 0;
   font-style: italic;
-}
-
-.hero__photo {
-  margin: 0 auto var(--space-lg);
-  width: min(70vw, 220px);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-modal);
-  border: 3px solid rgba(255, 255, 255, 0.35);
-}
-
-.hero__photo img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
 }
 
 .hero__date {
@@ -672,6 +1078,43 @@ a {
   color: var(--danger);
 }
 
+.rsvp-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(216, 180, 160, 0.45);
+}
+
+.rsvp-stats__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.85rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  border: 1px solid rgba(216, 180, 160, 0.35);
+  text-align: center;
+}
+
+.rsvp-stats__value {
+  font-family: var(--font-serif);
+  font-size: clamp(1.55rem, 4.5vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--primary);
+}
+
+.rsvp-stats__label {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
 .radio-group {
   display: flex;
   flex-direction: column;
@@ -778,13 +1221,6 @@ a {
   padding: var(--space-3xl) 0 var(--space-2xl);
   text-align: center;
   background: linear-gradient(180deg, transparent, rgba(122, 75, 82, 0.08));
-}
-
-.footer__names {
-  font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 3vw, 1.9rem);
-  color: var(--primary-dark);
-  margin: 0 0 0.5rem;
 }
 
 .footer__thanks {
@@ -1145,10 +1581,6 @@ body.modal-open {
 }
 
 @media (min-width: 900px) {
-  .hero__photo {
-    width: 240px;
-  }
-
   .wishes-layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
     align-items: start;

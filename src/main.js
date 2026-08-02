@@ -1,6 +1,7 @@
 import './style.css';
 import { initRsvpForm } from './rsvp.js';
 import { initWishes } from './wishes.js';
+import { initEnvelopeIntro } from './envelope.js';
 import {
   formatMalayDate,
   initModal,
@@ -211,6 +212,7 @@ function initBottomNav() {
 
 function initApp() {
   applyWeddingConfig(weddingConfig);
+  initEnvelopeIntro(weddingConfig);
   startCountdown(weddingConfig.event.date, document.getElementById('countdown'));
   SHEET_MODALS.forEach((id) => initModal(id));
   initBottomNav();

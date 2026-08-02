@@ -12,13 +12,82 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Outfit:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
-  <body>
+  <body class="envelope-locked">
     <a class="skip-link" href="#utama">Langkau ke kandungan</a>
+
+    <div
+      class="envelope-intro"
+      id="envelope-intro"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="envelope-intro-title"
+      aria-describedby="envelope-intro-hint"
+    >
+      <div class="envelope-intro__bg" aria-hidden="true"></div>
+
+      <div class="envelope-intro__header">
+        <p class="envelope-intro__eyebrow" id="envelope-intro-title">
+          ANDA ADA SURAT DARI
+        </p>
+        <p class="envelope-intro__names">Imanina dan Danish</p>
+      </div>
+
+      <button
+        type="button"
+        class="letter"
+        id="open-envelope"
+        aria-label="Buka surat jemputan"
+      >
+        <div class="letter__stage">
+          <!-- Layer 1: envelope interior -->
+          <div class="letter__back" aria-hidden="true"></div>
+
+          <!-- Layer 2: top flap -->
+          <div class="letter__flap" aria-hidden="true"></div>
+
+          <!-- Layer 3: card + photos (rise out when open) -->
+          <div class="letter__mail" aria-hidden="true">
+            <div class="letter__polaroid letter__polaroid--left">
+              <img src="images/couple-placeholder.jpg" alt="" />
+            </div>
+            <div class="letter__polaroid letter__polaroid--right">
+              <img src="images/couple-placeholder.jpg" alt="" />
+            </div>
+            <article class="letter__card">
+              <p class="letter__card-script">
+                Nur Yasmin Imanina
+                <span>&amp;</span>
+                Muhammad Danish
+              </p>
+              <p class="letter__card-line">Walimatulurus</p>
+              <p class="letter__card-date" id="letter-card-date">07.11.2026</p>
+              <p class="letter__card-place" id="letter-card-place">
+                Orchid Event Space Larkin
+              </p>
+            </article>
+          </div>
+
+          <!-- Layer 4: left and right side flaps, in front of the contents -->
+          <div class="letter__sides" aria-hidden="true"></div>
+
+          <!-- Layer 5: bottom flap, folded over the side flaps -->
+          <div class="letter__pocket" aria-hidden="true"></div>
+
+          <!-- Layer 6: florals resting on the front, and the wax seal -->
+          <img class="letter__florals" src="images/floral-decoration.png" alt="" />
+          <span class="letter__seal" aria-hidden="true"></span>
+        </div>
+      </button>
+
+      <p class="envelope-intro__hint" id="envelope-intro-hint">
+        Tekan surat untuk membuka jemputan
+      </p>
+    </div>
 
     <div class="floral floral--top" aria-hidden="true">
       <img src="images/floral-decoration.png" alt="" width="180" height="180" />
@@ -32,18 +101,10 @@
       <div class="hero__content container">
         <p class="hero__eyebrow fade-in">Walimatulurus</p>
         <h1 class="hero__names fade-in">
-          Muhammad Danish
+          Imanina
           <span class="hero__ampersand">&amp;</span>
-          Nur Yasmin Imanina
+          Danish
         </h1>
-        <figure class="hero__photo fade-in">
-          <img
-            src="images/couple-placeholder.jpg"
-            alt="Gambar pasangan Muhammad Danish dan Nur Yasmin Imanina"
-            width="320"
-            height="400"
-          />
-        </figure>
         <p class="hero__date fade-in" id="hero-date">Sabtu, 07 November 2026</p>
         <div class="countdown fade-in" id="countdown" aria-live="polite" aria-atomic="true">
           <div class="countdown__item">
@@ -229,6 +290,17 @@
               <span class="btn__spinner" aria-hidden="true"></span>
               <span class="btn__text">Hantar RSVP</span>
             </button>
+
+            <div class="rsvp-stats" aria-live="polite" aria-atomic="true">
+              <div class="rsvp-stats__item">
+                <span class="rsvp-stats__value" id="rsvp-count-hadir">—</span>
+                <span class="rsvp-stats__label">Hadir</span>
+              </div>
+              <div class="rsvp-stats__item">
+                <span class="rsvp-stats__value" id="rsvp-count-tidak-hadir">—</span>
+                <span class="rsvp-stats__label">Tidak hadir</span>
+              </div>
+            </div>
           </form>
         </div>
       </section>
@@ -300,7 +372,6 @@
 
     <footer class="footer">
       <div class="container narrow">
-        <p class="footer__names">Muhammad Danish &amp; Nur Yasmin Imanina</p>
         <p class="footer__thanks">Terima kasih atas doa dan kehadiran anda.</p>
         <p class="footer__copy">
           &copy; <span id="copyright-year"></span> Walimatulurus Danish &amp; Yasmin
