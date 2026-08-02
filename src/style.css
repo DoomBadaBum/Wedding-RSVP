@@ -77,6 +77,7 @@ body {
     linear-gradient(180deg, var(--cream) 0%, var(--soft-pink) 45%, var(--cream) 100%);
   min-height: 100vh;
   overflow-x: hidden;
+  padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
 }
 
 img {
@@ -460,76 +461,112 @@ a {
 }
 
 /* -----------------------------------------------------------------------------
-   Greeting
+   Invitation greeting (formal kad kahwin layout)
    ----------------------------------------------------------------------------- */
-.greeting__text {
+.invitation {
   text-align: center;
-  font-size: clamp(1rem, 2.4vw, 1.125rem);
-  color: var(--text-light);
-  margin: 0 0 var(--space-xl);
 }
 
-.greeting__names {
-  text-align: center;
-  padding: var(--space-xl) var(--space-md);
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(216, 180, 160, 0.45);
-}
-
-.greeting__name {
+.invitation__bismillah {
+  margin: 0 0 var(--space-sm);
   font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
-  font-weight: 600;
+  font-size: clamp(1.15rem, 3.2vw, 1.55rem);
   color: var(--primary-dark);
-  margin: 0;
-  letter-spacing: 0.04em;
-  line-height: 1.35;
+  line-height: 1.6;
 }
 
-.greeting__and {
+.invitation__salam {
+  margin: 0 0 var(--space-xl);
   font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+
+.invitation__hosts {
+  margin: 0 0 var(--space-lg);
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 3.2vw, 1.55rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  color: var(--text-dark);
+  text-transform: uppercase;
+}
+
+.invitation__hosts-and {
+  display: block;
+  margin: 0.2rem 0;
+  font-weight: 600;
+}
+
+.invitation__text {
+  margin: 0 auto var(--space-xl);
+  max-width: 34rem;
+  font-size: clamp(0.92rem, 2.2vw, 1.02rem);
+  line-height: 1.75;
+  color: var(--text-light);
+}
+
+.invitation__couple {
+  margin: 0;
+  padding: var(--space-lg) var(--space-md);
+}
+
+.invitation__name {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.45rem, 4.2vw, 2.05rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: #6b5a5c;
+}
+
+.invitation__and {
+  margin: 0.55rem 0;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
   font-style: italic;
   color: var(--gold);
-  font-size: 1.5rem;
-  margin: 0.5rem 0;
 }
 
 /* -----------------------------------------------------------------------------
-   Event details
+   Invitation event details
    ----------------------------------------------------------------------------- */
-.details__grid {
+.invitation-details {
   display: grid;
-  gap: var(--space-md);
-  margin-bottom: var(--space-xl);
-}
-
-.detail-card {
-  background: var(--white);
-  border-radius: var(--radius-md);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-card);
-  border: 1px solid rgba(216, 180, 160, 0.35);
+  gap: var(--space-xl);
+  margin: 0 auto var(--space-2xl);
+  max-width: 36rem;
   text-align: center;
 }
 
-.detail-card__label {
-  margin: 0 0 0.35rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+.invitation-detail__label {
+  margin: 0 0 0.45rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--primary-dark);
   font-weight: 600;
 }
 
-.detail-card__value {
+.invitation-detail__value {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-  color: var(--primary-dark);
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
   font-weight: 600;
-  line-height: 1.35;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+.invitation-detail__meta {
+  margin: 0.45rem auto 0;
+  max-width: 28rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-light);
 }
 
 .details__actions {
@@ -853,7 +890,7 @@ body.modal-open {
 .toast {
   position: fixed;
   left: 50%;
-  bottom: 1.25rem;
+  bottom: calc(5rem + env(safe-area-inset-bottom));
   transform: translateX(-50%) translateY(120%);
   z-index: 1100;
   max-width: min(92vw, 24rem);
@@ -883,6 +920,198 @@ body.modal-open {
 }
 
 /* -----------------------------------------------------------------------------
+   Bottom navigation bar
+   ----------------------------------------------------------------------------- */
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 900;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+  min-height: 64px;
+  padding: 0.45rem 0.5rem calc(0.45rem + env(safe-area-inset-bottom));
+  background: #f3e4e1;
+  border-top: 1px solid rgba(122, 75, 82, 0.12);
+  box-shadow: 0 -6px 20px rgba(48, 39, 41, 0.08);
+}
+
+.bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  min-height: 48px;
+  border: 0;
+  background: transparent;
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), color var(--transition);
+}
+
+.bottom-nav__item:hover,
+.bottom-nav__item:focus-visible {
+  background: rgba(122, 75, 82, 0.08);
+  color: var(--primary-dark);
+}
+
+.bottom-nav__icon {
+  display: grid;
+  place-items: center;
+  width: 1.55rem;
+  height: 1.55rem;
+}
+
+.bottom-nav__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bottom-nav__label {
+  line-height: 1;
+}
+
+.modal--sheet .modal__dialog.sheet-dialog {
+  width: min(100%, 22rem);
+  background: #f7ece9;
+  border: 1px solid rgba(122, 75, 82, 0.12);
+  padding: 1.5rem 1.25rem 1.35rem;
+}
+
+.sheet-dialog__title {
+  margin: 0 0 1rem;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+
+.sheet-dialog__venue {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+.sheet-dialog__address {
+  margin: 0 0 1.25rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-light);
+}
+
+.sheet-dialog__note {
+  margin: 0 0 1.1rem;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+.sheet-dialog__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.sheet-dialog__stack {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.sheet-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--text-dark);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--text-dark);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.sheet-btn:hover {
+  background: var(--white);
+}
+
+.sheet-btn:active {
+  transform: scale(0.98);
+}
+
+.sheet-btn--block {
+  width: 100%;
+}
+
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.contact-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 44px;
+}
+
+.contact-list__name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.contact-list__actions {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.contact-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(48, 39, 41, 0.2);
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.contact-icon-btn:hover {
+  background: var(--white);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+.contact-icon-btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+/* -----------------------------------------------------------------------------
    Desktop / tablet
    ----------------------------------------------------------------------------- */
 @media (min-width: 640px) {
@@ -898,14 +1127,6 @@ body.modal-open {
 
   .countdown {
     gap: 0.75rem;
-  }
-
-  .details__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .detail-card--wide {
-    grid-column: 1 / -1;
   }
 
   .details__actions {
@@ -926,14 +1147,6 @@ body.modal-open {
 @media (min-width: 900px) {
   .hero__photo {
     width: 240px;
-  }
-
-  .details__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .detail-card--wide {
-    grid-column: span 3;
   }
 
   .wishes-layout {

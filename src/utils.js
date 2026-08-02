@@ -1,5 +1,5 @@
 /**
- * Shared helpers: dates, phones, DOM safety, modals, toasts, calendar.
+ * Shared helpers: dates, phones, DOM safety, modals, toasts.
  */
 
 const MALAY_MONTHS = [
@@ -160,12 +160,18 @@ export function openModal(modalId) {
   document.addEventListener('keydown', focusTrapHandler);
 }
 
-export function closeModal(modalId) {
+export function closeModal(modalId, { immediate = false } = {}) {
   const modal = document.getElementById(modalId);
   if (!modal || modal.hidden) return;
 
   modal.classList.remove('modal--open');
-  document.body.classList.remove('modal-open');
+
+  const stillOpen = Array.from(document.querySelectorAll('.modal')).some(
+    (el) => el.id !== modalId && !el.hidden
+  );
+  if (!stillOpen) {
+    document.body.classList.remove('modal-open');
+  }
 
   if (focusTrapHandler) {
     document.removeEventListener('keydown', focusTrapHandler);
@@ -180,7 +186,7 @@ export function closeModal(modalId) {
     previouslyFocused = null;
   };
 
-  if (prefersReducedMotion()) {
+  if (immediate || prefersReducedMotion()) {
     finish();
   } else {
     window.setTimeout(finish, 250);
@@ -220,55 +226,6 @@ export function setButtonLoading(button, isLoading, loadingText, idleText) {
   if (textEl) {
     textEl.textContent = isLoading ? loadingText : idleText;
   }
-}
-
-export function downloadIcsEvent(config) {
-  const start = new Date(config.event.date);
-  const end = new Date(start.getTime() + 5 * 60 * 60 * 1000);
-
-  const formatIcsDate = (date) =>
-    date
-      .toISOString()
-      .replace(/[-:]/g, '')
-      .replace(/\.\d{3}/, '');
-
-  const title = `Walimatulurus ${shortName(config.couple.groom)} & ${shortName(config.couple.bride)}`;
-  const description = `Majlis perkahwinan ${config.couple.groom} & ${config.couple.bride}`;
-  const location = `${config.event.venue}, ${config.event.address}`;
-
-  const ics = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//Wedding RSVP//MS//EN',
-    'CALSCALE:GREGORIAN',
-    'METHOD:PUBLISH',
-    'BEGIN:VEVENT',
-    `DTSTART:${formatIcsDate(start)}`,
-    `DTEND:${formatIcsDate(end)}`,
-    `SUMMARY:${escapeIcs(title)}`,
-    `DESCRIPTION:${escapeIcs(description)}`,
-    `LOCATION:${escapeIcs(location)}`,
-    'END:VEVENT',
-    'END:VCALENDAR',
-  ].join('\r\n');
-
-  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'walimatulurus.ics';
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-}
-
-function shortName(fullName) {
-  return String(fullName).split(' ')[0] || fullName;
-}
-
-function escapeIcs(value) {
-  return String(value).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
 }
 
 export function initScrollReveal() {

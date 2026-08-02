@@ -44,7 +44,7 @@
             height="400"
           />
         </figure>
-        <p class="hero__date fade-in" id="hero-date">1 Januari 2027</p>
+        <p class="hero__date fade-in" id="hero-date">Sabtu, 07 November 2026</p>
         <div class="countdown fade-in" id="countdown" aria-live="polite" aria-atomic="true">
           <div class="countdown__item">
             <span class="countdown__value" data-unit="days">00</span>
@@ -72,48 +72,59 @@
 
     <main>
       <section class="section greeting" id="ucapan-jemputan" aria-labelledby="greeting-title">
-        <div class="container narrow">
-          <div class="ornament" aria-hidden="true">❧</div>
-          <h2 class="section__title" id="greeting-title">Jemputan</h2>
-          <p class="greeting__text">
-            Dengan penuh kesyukuran ke hadrat Allah SWT, kami dengan sukacitanya
-            menjemput Dato’ / Datin / Tuan / Puan / Encik / Cik ke majlis
-            perkahwinan kami.
+        <div class="container narrow invitation">
+          <p class="invitation__bismillah" lang="ar" aria-hidden="true">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+          <p class="invitation__salam" id="greeting-title">Assalamualaikum &amp; Salam Sejahtera</p>
+
+          <p class="invitation__hosts" id="hosts-names">
+            MAZLAN BIN SABTHU
+            <span class="invitation__hosts-and">&amp;</span>
+            ERNIE HAIRANI BINTI ABD JALIL
           </p>
-          <div class="greeting__names">
-            <p class="greeting__name" id="groom-full-name">MUHAMMAD DANISH BIN SHAMSURI</p>
-            <p class="greeting__and">&amp;</p>
-            <p class="greeting__name" id="bride-full-name">NUR YASMIN IMANINA BINTI MAZLAN</p>
+
+          <p class="invitation__text" id="invitation-text">
+            Dengan penuh kesyukuran ke hadrat Allah SWT, kami dengan sukacitanya
+            menjemput
+            Tan Sri / Puan Sri / Dato’ / Datin / Tuan / Puan / Encik / Cik
+            ke majlis perkahwinan puteri kami
+          </p>
+
+          <div class="invitation__couple">
+            <p class="invitation__name" id="bride-full-name">Nur Yasmin Imanina Binti Mazlan</p>
+            <p class="invitation__and">&amp;</p>
+            <p class="invitation__name" id="groom-full-name">Muhammad Danish Bin Shamsuri</p>
           </div>
         </div>
       </section>
 
       <section class="section details" id="lokasi" aria-labelledby="details-title">
-        <div class="container">
+        <div class="container narrow">
           <div class="ornament" aria-hidden="true">❧</div>
           <h2 class="section__title" id="details-title">Maklumat Majlis</h2>
-          <p class="section__subtitle">Butiran tarikh, masa dan lokasi majlis perkahwinan.</p>
 
-          <div class="details__grid">
-            <article class="detail-card">
-              <h3 class="detail-card__label">Tarikh</h3>
-              <p class="detail-card__value" id="event-date-display">1 Januari 2027</p>
+          <div class="invitation-details">
+            <article class="invitation-detail">
+              <h3 class="invitation-detail__label">Tempat</h3>
+              <p class="invitation-detail__value" id="event-venue">Orchid Event Space Larkin</p>
+              <p class="invitation-detail__meta" id="event-address">
+                Level 4, Larkin Junction Mall, Jalan Larkin Perdana 2,
+                Taman Larkin Perdana, 80350 Johor Bahru, Johor
+              </p>
             </article>
-            <article class="detail-card">
-              <h3 class="detail-card__label">Hari</h3>
-              <p class="detail-card__value" id="event-day">Jumaat</p>
+
+            <article class="invitation-detail">
+              <h3 class="invitation-detail__label">Tarikh</h3>
+              <p class="invitation-detail__value" id="event-date-display">Sabtu, 07 November 2026</p>
             </article>
-            <article class="detail-card">
-              <h3 class="detail-card__label">Masa</h3>
-              <p class="detail-card__value" id="event-time">11:00 pagi – 4:00 petang</p>
+
+            <article class="invitation-detail">
+              <h3 class="invitation-detail__label">Waktu</h3>
+              <p class="invitation-detail__value" id="event-time">11:00 pagi – 4:00 petang</p>
             </article>
-            <article class="detail-card">
-              <h3 class="detail-card__label">Lokasi</h3>
-              <p class="detail-card__value" id="event-venue">Nama Dewan</p>
-            </article>
-            <article class="detail-card detail-card--wide">
-              <h3 class="detail-card__label">Alamat</h3>
-              <p class="detail-card__value" id="event-address">Alamat penuh majlis</p>
+
+            <article class="invitation-detail">
+              <h3 class="invitation-detail__label">Kod Pakaian</h3>
+              <p class="invitation-detail__value" id="event-dress-code">Formal</p>
             </article>
           </div>
 
@@ -136,9 +147,6 @@
             >
               Buka Waze
             </a>
-            <button type="button" class="btn btn--outline" id="calendar-btn">
-              Tambah ke Kalendar
-            </button>
           </div>
         </div>
       </section>
@@ -300,6 +308,60 @@
       </div>
     </footer>
 
+    <nav class="bottom-nav" aria-label="Pintasan pantas">
+      <button type="button" class="bottom-nav__item" data-open-modal="contact-modal">
+        <span class="bottom-nav__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.73-1.27a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92z"
+            />
+          </svg>
+        </span>
+        <span class="bottom-nav__label">Hubungi</span>
+      </button>
+
+      <button type="button" class="bottom-nav__item" data-open-modal="location-modal">
+        <span class="bottom-nav__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 21s7-5.33 7-11a7 7 0 1 0-14 0c0 5.67 7 11 7 11z"
+            />
+            <circle cx="12" cy="10" r="2.5" />
+          </svg>
+        </span>
+        <span class="bottom-nav__label">Lokasi</span>
+      </button>
+
+      <button type="button" class="bottom-nav__item" data-open-modal="rsvp-nav-modal">
+        <span class="bottom-nav__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11z"
+            />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8l8 5 8-5" />
+            <text
+              x="12"
+              y="16.2"
+              text-anchor="middle"
+              font-size="5.2"
+              font-family="Outfit, sans-serif"
+              fill="currentColor"
+              stroke="none"
+            >
+              RSVP
+            </text>
+          </svg>
+        </span>
+        <span class="bottom-nav__label">RSVP</span>
+      </button>
+    </nav>
+
     <div
       class="modal"
       id="success-modal"
@@ -320,6 +382,97 @@
           Terima kasih kerana mengesahkan kehadiran anda.
         </p>
         <button type="button" class="btn btn--primary" data-modal-close>Tutup</button>
+      </div>
+    </div>
+
+    <div
+      class="modal modal--sheet"
+      id="contact-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-modal-title"
+      hidden
+    >
+      <div class="modal__backdrop" data-modal-close></div>
+      <div class="modal__dialog sheet-dialog" role="document">
+        <button type="button" class="modal__close" data-modal-close aria-label="Tutup">
+          &times;
+        </button>
+        <h2 class="sheet-dialog__title" id="contact-modal-title">Hubungi</h2>
+        <ul class="contact-list" id="contact-list"></ul>
+      </div>
+    </div>
+
+    <div
+      class="modal modal--sheet"
+      id="location-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="location-modal-title"
+      hidden
+    >
+      <div class="modal__backdrop" data-modal-close></div>
+      <div class="modal__dialog sheet-dialog" role="document">
+        <button type="button" class="modal__close" data-modal-close aria-label="Tutup">
+          &times;
+        </button>
+        <h2 class="sheet-dialog__title" id="location-modal-title">Lokasi</h2>
+        <p class="sheet-dialog__venue" id="location-modal-venue">Orchid Event Space Larkin</p>
+        <p class="sheet-dialog__address" id="location-modal-address">
+          Level 4, Larkin Junction Mall, Jalan Larkin Perdana 2,
+          Taman Larkin Perdana, 80350 Johor Bahru, Johor
+        </p>
+        <div class="sheet-dialog__actions">
+          <a
+            class="sheet-btn"
+            id="location-maps-btn"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Maps
+          </a>
+          <a
+            class="sheet-btn"
+            id="location-waze-btn"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Waze
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal modal--sheet"
+      id="rsvp-nav-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="rsvp-nav-modal-title"
+      hidden
+    >
+      <div class="modal__backdrop" data-modal-close></div>
+      <div class="modal__dialog sheet-dialog" role="document">
+        <button type="button" class="modal__close" data-modal-close aria-label="Tutup">
+          &times;
+        </button>
+        <h2 class="sheet-dialog__title" id="rsvp-nav-modal-title">RSVP &amp; Ucapan</h2>
+        <p class="sheet-dialog__note">Sahkan kehadiran atau tinggalkan ucapan anda.</p>
+        <div class="sheet-dialog__stack">
+          <button type="button" class="sheet-btn sheet-btn--block" data-scroll-to="rsvp" data-modal-close>
+            Sahkan Kehadiran
+          </button>
+          <button
+            type="button"
+            class="sheet-btn sheet-btn--block"
+            data-scroll-to="titipan-ucapan"
+            data-modal-close
+          >
+            Berikan Ucapan
+          </button>
+        </div>
       </div>
     </div>
 
