@@ -1356,6 +1356,90 @@ body.modal-open {
 }
 
 /* -----------------------------------------------------------------------------
+   Floating music toggle
+   ----------------------------------------------------------------------------- */
+.music-toggle {
+  position: fixed;
+  top: calc(1rem + env(safe-area-inset-top));
+  right: 1rem;
+  z-index: 3100;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(247, 239, 232, 0.35);
+  border-radius: 50%;
+  background: rgba(86, 49, 56, 0.78);
+  color: #f7efe8;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.music-toggle:hover {
+  transform: translateY(-2px) scale(1.04);
+  background: rgba(122, 75, 82, 0.92);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.34);
+}
+
+.music-toggle:focus-visible {
+  outline: 3px solid rgba(184, 148, 94, 0.9);
+  outline-offset: 2px;
+}
+
+.music-toggle__icon {
+  display: none;
+  width: 22px;
+  height: 22px;
+}
+
+.music-toggle__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.music-toggle:not(.is-muted) .music-toggle__icon--on,
+.music-toggle.is-muted .music-toggle__icon--off {
+  display: block;
+}
+
+.music-toggle:not(.is-muted)::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(247, 239, 232, 0.35);
+  animation: music-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.music-toggle.is-muted::after {
+  display: none;
+}
+
+@keyframes music-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.15;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-toggle:not(.is-muted)::after {
+    animation: none;
+  }
+}
+
+/* -----------------------------------------------------------------------------
    Bottom navigation bar
    ----------------------------------------------------------------------------- */
 .bottom-nav {

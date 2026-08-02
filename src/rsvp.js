@@ -69,8 +69,27 @@ export function initRsvpForm() {
 
   paxInput.addEventListener('input', () => {
     const status = form.querySelector('input[name="attendance"]:checked')?.value;
+    if (status !== 'tidak_hadir') {
+      const raw = Number(paxInput.value);
+      if (Number.isFinite(raw) && raw > 10) {
+        paxInput.value = '10';
+      }
+    }
     const result = isPaxValid(paxInput.value, status);
     if (result.valid) clearFieldError(paxInput, paxError);
+    else if (paxInput.value !== '') setFieldError(paxInput, paxError, result.message);
+  });
+
+  paxInput.addEventListener('blur', () => {
+    const status = form.querySelector('input[name="attendance"]:checked')?.value;
+    if (status === 'tidak_hadir') return;
+    const raw = Number(paxInput.value);
+    if (!Number.isFinite(raw) || raw < 1) {
+      paxInput.value = '1';
+    } else if (raw > 10) {
+      paxInput.value = '10';
+    }
+    clearFieldError(paxInput, paxError);
   });
 
   form.addEventListener('submit', async (event) => {

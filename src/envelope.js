@@ -1,4 +1,5 @@
 import { prefersReducedMotion } from './utils.js';
+import { playMusic } from './music.js';
 
 /**
  * Closed-envelope intro matching the letter template.
@@ -49,6 +50,7 @@ export function initEnvelopeIntro(config) {
     opened = true;
     openBtn.disabled = true;
     window.scrollTo(0, 0);
+    playMusic();
 
     if (prefersReducedMotion()) {
       intro.classList.add('is-open', 'is-done');

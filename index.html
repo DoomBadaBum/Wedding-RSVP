@@ -20,6 +20,41 @@
   <body class="envelope-locked">
     <a class="skip-link" href="#utama">Langkau ke kandungan</a>
 
+    <audio id="bg-music" src="audio/background-music.mp3" loop preload="auto" playsinline></audio>
+    <button
+      type="button"
+      class="music-toggle"
+      id="music-toggle"
+      aria-label="Matikan muzik latar"
+      aria-pressed="false"
+      title="Muzik"
+    >
+      <span class="music-toggle__icon music-toggle__icon--on" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M11 5L6 9H3v6h3l5 4V5z"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.5 8.5a4.5 4.5 0 0 1 0 7M18 6a8 8 0 0 1 0 12"
+          />
+        </svg>
+      </span>
+      <span class="music-toggle__icon music-toggle__icon--off" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M11 5L6 9H3v6h3l5 4V5z"
+          />
+          <path stroke-linecap="round" d="M22 9l-6 6M16 9l6 6" />
+        </svg>
+      </span>
+    </button>
+
     <div
       class="envelope-intro"
       id="envelope-intro"
@@ -32,7 +67,7 @@
 
       <div class="envelope-intro__header">
         <p class="envelope-intro__eyebrow" id="envelope-intro-title">
-          ANDA ADA SURAT DARI
+          ANDA MENERIMA SURAT DARI
         </p>
         <p class="envelope-intro__names">Imanina dan Danish</p>
       </div>
@@ -246,7 +281,6 @@
                 maxlength="30"
                 autocomplete="tel"
                 inputmode="tel"
-                placeholder="0123456789"
                 required
                 aria-describedby="rsvp-phone-error"
               />
@@ -277,8 +311,10 @@
                 name="pax"
                 min="1"
                 max="10"
+                step="1"
                 value="1"
                 required
+                inputmode="numeric"
                 aria-describedby="rsvp-pax-error"
               />
               <p class="form__error" id="rsvp-pax-error" role="alert"></p>
@@ -374,7 +410,7 @@
       <div class="container narrow">
         <p class="footer__thanks">Terima kasih atas doa dan kehadiran anda.</p>
         <p class="footer__copy">
-          &copy; <span id="copyright-year"></span> Walimatulurus Danish &amp; Yasmin
+          &copy; <span id="copyright-year"></span> Solemnization of Imanish
         </p>
       </div>
     </footer>
