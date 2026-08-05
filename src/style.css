@@ -358,6 +358,19 @@ body.envelope-locked .floral {
   pointer-events: none;
 }
 
+.letter__lily {
+  position: absolute;
+  right: -10%;
+  bottom: -15%;
+  z-index: 6;
+  width: 36%;
+  height: auto;
+  opacity: 1;
+  transform: rotate(-12deg) scale(1);
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.28));
+  pointer-events: none;
+}
+
 /* Bottom flap: apex at the centre so all four folds converge on one point */
 .letter__pocket {
   position: absolute;
@@ -514,6 +527,7 @@ body.envelope-locked .floral {
   .letter__card,
   .letter__polaroid,
   .letter__florals,
+  .letter__lily,
   .letter__seal,
   .envelope-intro {
     transition-duration: 0.01ms !important;
@@ -982,7 +996,7 @@ a {
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--primary-dark);
+  color: #b8945e;
   font-weight: 600;
 }
 
@@ -1183,7 +1197,7 @@ a {
 .wishes-list__heading {
   font-family: var(--font-serif);
   font-size: 1.5rem;
-  color: var(--primary-dark);
+  color: #b8945e;
   margin: 0 0 var(--space-md);
 }
 
@@ -1215,7 +1229,7 @@ a {
   padding: var(--space-lg);
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(216, 180, 160, 0.35);
-  border-left: 4px solid var(--gold);
+  border-left: 4px solid #3c0008;
 }
 
 .wish-card__name {
