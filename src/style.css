@@ -126,20 +126,14 @@ body.envelope-locked .floral {
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(ellipse at 50% 18%, rgba(184, 148, 94, 0.22), transparent 42%),
-    radial-gradient(ellipse at 20% 80%, rgba(122, 75, 82, 0.45), transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(86, 49, 56, 0.5), transparent 45%),
-    linear-gradient(165deg, #2a151a 0%, #563138 38%, #3d2228 68%, #1f1014 100%);
+    radial-gradient(ellipse at 50% 18%, rgba(128, 20, 30, 0.45), transparent 48%),
+    radial-gradient(ellipse at 18% 82%, rgba(60, 0, 8, 0.95), transparent 48%),
+    radial-gradient(ellipse at 82% 72%, rgba(30, 0, 6, 0.9), transparent 45%),
+    linear-gradient(165deg, #5a0012 0%, #3c0008 40%, #2a0006 70%, #1a0004 100%);
 }
 
 .envelope-intro::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(30, 14, 18, 0.35) 0%, transparent 40%, rgba(30, 14, 18, 0.45) 100%);
+  content: none;
 }
 
 .envelope-intro__header,
@@ -397,37 +391,63 @@ body.envelope-locked .floral {
   left: 50%;
   top: 60%;
   z-index: 7;
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle at 32% 28%, #a15f68 0%, #7a4b52 42%, #4a282e 100%);
-  box-shadow:
-    0 8px 16px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -3px 8px rgba(0, 0, 0, 0.25);
-  transition: opacity 0.3s ease, transform 0.4s ease;
-}
-
-.letter__seal::before {
-  content: '';
-  position: absolute;
-  inset: 7px;
-  border-radius: 50%;
-  border: 1px dashed rgba(247, 239, 232, 0.4);
-}
-
-.letter__seal::after {
-  content: 'I&D';
-  position: absolute;
-  inset: 0;
+  width: 78px;
+  height: 78px;
   display: grid;
   place-items: center;
-  font-family: var(--font-serif);
+  transform: translate(-50%, -50%) rotate(-8deg);
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.4));
+  transition: opacity 0.3s ease, transform 0.4s ease;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.letter__seal::before,
+.letter__seal::after {
+  content: none;
+  display: none;
+}
+
+.letter__seal-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.letter__seal-mono {
+  position: relative;
+  z-index: 1;
+  width: 48%;
+  height: 48%;
+  pointer-events: none;
+}
+
+.letter__seal-mono-letter {
+  position: absolute;
+  font-family: var(--font-script);
+  font-weight: 400;
+  line-height: 0.75;
+  color: #f3e6dc;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+/* Match HA seal: first letter upper-left, second lower-right, overlapping */
+.letter__seal-mono-letter--i {
+  top: 16%;
+  left: 18%;
   font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #f7efe8;
+  transform: rotate(-18deg);
+}
+
+.letter__seal-mono-letter--d {
+  right: 22%;
+  bottom: 14%;
+  font-size: 0.82rem;
+  transform: rotate(6deg);
 }
 
 /* Stands open and tips back past vertical, showing its inner face. */
@@ -439,7 +459,7 @@ body.envelope-locked .floral {
 
 .envelope-intro.is-open .letter__seal {
   opacity: 0;
-  transform: translate(-50%, -50%) scale(0.7);
+  transform: translate(-50%, -50%) rotate(-8deg) scale(0.7);
   pointer-events: none;
 }
 
@@ -763,6 +783,14 @@ a {
   align-items: stretch;
   max-width: 22rem;
   margin-inline: auto;
+}
+
+.hero__rsvp-note {
+  margin: 1rem 0 0;
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  color: rgba(255, 250, 245, 0.88);
 }
 
 /* -----------------------------------------------------------------------------

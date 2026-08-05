@@ -50,6 +50,7 @@ export const weddingConfig = {
     day: 'Sabtu',
     startTime: '11:00 pagi',
     endTime: '4:00 petang',
+    bersandingTime: '12:00 tengah hari',
     venue: 'Orchid Event Space Larkin',
     address:
       'Level 4, Larkin Junction Mall, Jalan Larkin Perdana 2, Taman Larkin Perdana, 80350 Johor Bahru, Johor',
@@ -78,6 +79,11 @@ function applyWeddingConfig(config) {
   const eventTime = document.getElementById('event-time');
   if (eventTime) {
     eventTime.textContent = `${config.event.startTime} – ${config.event.endTime}`;
+  }
+
+  const bersanding = document.getElementById('event-bersanding');
+  if (bersanding && config.event.bersandingTime) {
+    bersanding.textContent = config.event.bersandingTime;
   }
 
   const eventVenue = document.getElementById('event-venue');
