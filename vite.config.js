@@ -1,8 +1,6 @@
 import { defineConfig } from 'vite';
 
-// GitHub Pages project site: https://<user>.github.io/Wedding-RSVP/
-const isGitHubPages = process.env.GITHUB_PAGES === 'true';
-
+// Custom domain (danishximanina.com) serves from site root.
 export default defineConfig({
-  base: isGitHubPages ? '/Wedding-RSVP/' : '/',
+  base: '/',
 });
