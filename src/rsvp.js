@@ -71,8 +71,8 @@ export function initRsvpForm() {
     const status = form.querySelector('input[name="attendance"]:checked')?.value;
     if (status !== 'tidak_hadir') {
       const raw = Number(paxInput.value);
-      if (Number.isFinite(raw) && raw > 10) {
-        paxInput.value = '10';
+      if (Number.isFinite(raw) && raw > 2) {
+        paxInput.value = '2';
       }
     }
     const result = isPaxValid(paxInput.value, status);
@@ -86,8 +86,8 @@ export function initRsvpForm() {
     const raw = Number(paxInput.value);
     if (!Number.isFinite(raw) || raw < 1) {
       paxInput.value = '1';
-    } else if (raw > 10) {
-      paxInput.value = '10';
+    } else if (raw > 2) {
+      paxInput.value = '2';
     }
     clearFieldError(paxInput, paxError);
   });

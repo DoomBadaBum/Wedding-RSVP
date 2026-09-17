@@ -60,8 +60,8 @@ export function isPaxValid(pax, attendanceStatus) {
     return { valid: false, message: 'Jumlah kehadiran mestilah nombor yang sah.' };
   }
 
-  if (number < 1 || number > 10) {
-    return { valid: false, message: 'Jumlah kehadiran mestilah antara 1 hingga 10.' };
+  if (number < 1 || number > 2) {
+    return { valid: false, message: 'Jumlah kehadiran mestilah antara 1 hingga 2.' };
   }
 
   return { valid: true, message: '', value: number };
