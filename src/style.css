@@ -683,10 +683,10 @@ a {
   padding: var(--space-2xl) 0;
   color: var(--white);
   background:
-    linear-gradient(160deg, rgba(86, 49, 56, 0.88), rgba(122, 75, 82, 0.78)),
-    radial-gradient(circle at 20% 20%, rgba(184, 148, 94, 0.35), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(216, 180, 160, 0.3), transparent 45%),
-    url('../images/couple-placeholder.jpg') center / cover no-repeat;
+    linear-gradient(160deg, rgba(86, 49, 56, 0.72), rgba(122, 75, 82, 0.58)),
+    radial-gradient(circle at 20% 20%, rgba(184, 148, 94, 0.28), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(216, 180, 160, 0.22), transparent 45%),
+    url('/images/couple-placeholder.png') center / cover no-repeat;
   isolation: isolate;
   overflow: hidden;
 }
@@ -695,7 +695,7 @@ a {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(48, 39, 41, 0.35) 0%, rgba(86, 49, 56, 0.55) 100%);
+    linear-gradient(180deg, rgba(48, 39, 41, 0.28) 0%, rgba(86, 49, 56, 0.42) 100%);
   z-index: -1;
 }
 
